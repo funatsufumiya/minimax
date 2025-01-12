@@ -2,6 +2,8 @@
 
 Minimalist 3D game engine in Clojure (This fork is for Win/Linux compatibility check)
 
+Note: [PR (#16)](https://github.com/roman01la/minimax/pull/16) was created from [this branch](https://github.com/funatsufumiya/minimax/tree/for_pr).
+
 ## How to run checks
 
 ```bash
