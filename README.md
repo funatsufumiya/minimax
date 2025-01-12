@@ -2,7 +2,7 @@
 
 Minimalist 3D game engine in Clojure (This fork is for Win/Linux compatibility check)
 
-Note: [PR (#16)](https://github.com/roman01la/minimax/pull/16) was created from [this branch](https://github.com/funatsufumiya/minimax/tree/for_pr).
+Note: [PR (#16)](https://github.com/roman01la/minimax/pull/16) was created from [PR branch](https://github.com/funatsufumiya/minimax/tree/for_pr). This fork's only task left is to check compatibility with LWJGL 3.3.6.
 
 ## How to run checks
 
