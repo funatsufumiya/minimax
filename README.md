@@ -48,7 +48,7 @@ nu ./scripts/start.nu
 
 ### Refactoring
 
-- [ ] code cleaning for PR
+- [x] code cleaning for PR
 
 -----
 
