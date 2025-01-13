@@ -42,6 +42,19 @@
                      :width width
                      :height height
                      :channels channels}))))
+                
+(defn- create-texture-name [^String path]
+  (let [file (io/file path)
+        name-with-ext (.getName file)
+        name (subs name-with-ext 0 (.lastIndexOf name-with-ext "."))]
+    name))
+
+
+(defn load-texture [^String path]
+  (let [path (.getAbsolutePath (io/file (io/resource path)))]
+    (create-texture* (create-texture-name path)
+                      (fn [^IntBuffer x ^IntBuffer y ^IntBuffer channels]
+                        (STBImage/stbi_load path x y channels 4)))))
 
 (def dummy-texture
   (delay
@@ -56,6 +69,10 @@
     (create-texture* name
                      (fn [^IntBuffer x ^IntBuffer y ^IntBuffer channels]
                        (STBImage/stbi_load_from_memory buff x y channels 4)))))
+
+(defn destroy-texture [texture]
+  (let [tex2d (:data texture)]
+    (t/destroy tex2d)))
 
 (defn scene->textures [^AIScene scene]
   (->> (process-textures scene)
