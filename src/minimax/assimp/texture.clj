@@ -51,10 +51,10 @@
 
 
 (defn load-texture [^String path]
-  (let [path (.getAbsolutePath (io/file (io/resource path)))]
-    (create-texture* (create-texture-name path)
+  (let [rpath (.getAbsolutePath (io/file (io/resource path)))]
+    (create-texture* (create-texture-name rpath)
                       (fn [^IntBuffer x ^IntBuffer y ^IntBuffer channels]
-                        (STBImage/stbi_load path x y channels 4)))))
+                        (STBImage/stbi_load rpath x y channels 4)))))
 
 (def dummy-texture
   (delay
