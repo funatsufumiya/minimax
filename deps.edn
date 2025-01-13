@@ -3,6 +3,14 @@
         org.clojure/core.match {:mvn/version "1.1.0"}
         org.joml/joml {:mvn/version "1.10.5"}
 
+        ; for video test (not working on macOS)
+        ;; com.github.zakgof/velvet-video {:mvn/version "0.5.2"}
+        ;; com.github.zakgof/velvet-video-natives {:mvn/version "0.2.8.full"}
+
+        ; for video test
+        org.jcodec/jcodec {:mvn/version "0.2.5"}
+        org.jcodec/jcodec-javase {:mvn/version "0.2.5"}
+
         org.lwjgl/lwjgl {:mvn/version "3.3.3"}
         org.lwjgl/lwjgl-glfw {:mvn/version "3.3.3"}
         org.lwjgl/lwjgl-bgfx {:mvn/version "3.3.3"}
