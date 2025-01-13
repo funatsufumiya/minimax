@@ -53,7 +53,7 @@ print $"GLSL is currently disabled for shader compatibility issues"
 def print_cmd [...args] {
     let joined = $args | str join " "
     let cmd = $"shaderc ($joined)"
-    print $cmd
+    print $"  ($cmd)"
     # eval $cmd # this is not supported in nushell
 }
 
@@ -116,3 +116,5 @@ compile_all_in_dir "resources/shaders/check_2d/vs_*" "vertex"
 compile_all_in_dir "resources/shaders/check_2d/fs_*" "fragment"
 compile_all_in_dir "resources/shaders/shadow_pd/fs_*" fragment
 compile_all_in_dir "resources/shaders/shadow_pd/vs_*" vertex
+compile_all_in_dir "resources/shaders/tex_2d/vs_*" vertex
+compile_all_in_dir "resources/shaders/tex_2d/fs_*" fragment

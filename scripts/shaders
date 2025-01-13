@@ -61,7 +61,7 @@ else
 fi
 
 function run_cmd {
-  echo "shaderc $@"
+  echo "  shaderc $@"
   shaderc $@
 }
 
@@ -115,3 +115,5 @@ compile_all_in_dir "resources/shaders/check_2d/vs_*" vertex
 compile_all_in_dir "resources/shaders/check_2d/fs_*" fragment
 compile_all_in_dir "resources/shaders/shadow_pd/fs_*" fragment
 compile_all_in_dir "resources/shaders/shadow_pd/vs_*" vertex
+compile_all_in_dir "resources/shaders/tex_2d/vs_*" vertex
+compile_all_in_dir "resources/shaders/tex_2d/fs_*" fragment
