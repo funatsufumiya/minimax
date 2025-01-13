@@ -56,6 +56,23 @@
                       (fn [^IntBuffer x ^IntBuffer y ^IntBuffer channels]
                         (STBImage/stbi_load rpath x y channels 4)))))
 
+(defn load-texture-from-external-file [^String path]
+  (let [rpath (.getAbsolutePath (io/file path))]
+    (create-texture* (create-texture-name rpath)
+                      (fn [^IntBuffer x ^IntBuffer y ^IntBuffer channels]
+                        (STBImage/stbi_load rpath x y channels 4)))))
+
+(defn update-texture-from-external-file [^String path texture]
+  (mem/slet [^IntBuffer x [:int 1]
+            ^IntBuffer y [:int 1]
+            ^IntBuffer channels [:int 1]]
+    (let [rpath (.getAbsolutePath (io/file path))
+          texture-handle (.handle (:data texture))
+          byte-buffer (STBImage/stbi_load rpath x y channels 4)
+          mem (bgfx/make-ref-release byte-buffer)]
+          ;; bgfx_update_texture_2d (@NativeType (value= "bgfx_texture_handle_t") short _handle, @NativeType (value= "uint16_t") int _layer, @NativeType (value= "uint8_t") int _mip, @NativeType (value= "uint16_t") int _x, @NativeType (value= "uint16_t") int _y, @NativeType (value= "uint16_t") int _width, @NativeType (value= "uint16_t") int _height, @NativeType (value= "bgfx_memory_t const *") BGFXMemory _mem, @NativeType (value= "uint16_t") int _pitch) {
+          (BGFX/bgfx_update_texture_2d texture-handle 1 0 0 0 (:width texture) (:height texture) mem 0))))
+
 (def dummy-texture
   (delay
     (let [path (.getAbsolutePath (io/file (io/resource "textures/w1x1.png")))]
